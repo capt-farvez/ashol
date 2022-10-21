@@ -1,0 +1,129 @@
+/*--------------------------------------------------------------------- File Name: responsive.css ---------------------------------------------------------------------*/
+
+@media (min-width: 1200px) and (max-width: 1342px) {}
+
+@media (min-width: 992px) and (max-width: 1199px) {
+    .white {
+        font-size: 72px;
+    }
+    #myCarousel .carousel-control-prev {
+        left: 6%;
+    }
+    .titlepage h2 {
+        font-size: 53px;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+    .white {
+        font-size: 56px;
+    }
+    .build_box h1 {
+        font-size: 39px;
+        line-height: 63px;
+    }
+    .build_box p {
+        padding-right: 118px
+    }
+    #myCarousel .carousel-control-prev {
+        left: 5%;
+    }
+    .build_box .conatct_btn {
+        margin-right: 8px;
+    }
+    .titlepage h2 {
+        font-size: 41px;
+        line-height: 44px
+    }
+}
+
+@media (min-width: 576px) and (max-width: 767px) {
+    .white {
+        font-size: 56px;
+    }
+    .build_box h1 {
+        font-size: 39px;
+        line-height: 63px;
+    }
+    .build_box p {
+        padding-right: 118px
+    }
+    #myCarousel .carousel-control-prev {
+        left: 2%;
+    }
+    .about .titlepage h2 {
+        padding-top: 40px;
+    }
+    .mar_bottom30 {
+        margin-bottom: 30px;
+    }
+    .bg_yeloow {
+        padding: 50px 20px;
+    }
+    ul.conta li {
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 575px) {
+    .header {
+        padding: 20px 0px;
+    }
+    .text_align_right {
+        margin-top: -35px;
+    }
+    .logo {
+        text-align: center !important;
+        float: left;
+        width: 150px;
+    }
+    .build_box {
+        padding-top: 41%;
+    }
+    .build_box .conatct_btn {
+        margin-right: 4px;
+        font-size: 14px;
+        max-width: 137px;
+    }
+    #myCarousel .carousel-control-next {
+        left: 20.4%;
+    }
+    .white {
+        font-size: 32px;
+    }
+    .build_box h1 {
+        font-size: 28px;
+        line-height: 39px;
+    }
+    .build_box p {
+        padding-right: 0;
+    }
+    #myCarousel .carousel-control-prev {
+        left: 2%;
+    }
+    .about .titlepage h2 {
+        padding-top: 40px;
+    }
+    .mar_bottom30 {
+        margin-bottom: 30px;
+    }
+    .titlepage h2 {
+        font-size: 32px;
+        line-height: 35px;
+    }
+    .bg_yeloow {
+        padding: 50px 20px;
+    }
+    .form_news {
+        display: inherit;
+    }
+    ul.conta {
+        display: block;
+        text-align: left;
+    }
+    ul.conta li {
+        display: block;
+    }
+    .banner_main strong {
+        right: 0%;
+    }
