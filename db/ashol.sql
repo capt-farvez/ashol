@@ -2,8 +2,8 @@
 -- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Oct 22, 2022 at 04:55 PM
+-- Host: localhost
+-- Generation Time: Oct 22, 2022 at 07:10 PM
 -- Server version: 10.4.25-MariaDB
 -- PHP Version: 8.1.10
 
@@ -71,13 +71,13 @@ INSERT INTO `area` (`area_name`, `region_name`, `city_name`) VALUES
 
 CREATE TABLE `branch` (
   `id` int(11) NOT NULL,
-  `brand_id` int(11) DEFAULT NULL,
-  `location` varchar(255) DEFAULT NULL,
-  `area_name` varchar(100) DEFAULT NULL,
-  `region_name` varchar(100) DEFAULT NULL,
-  `city_name` varchar(100) DEFAULT NULL,
-  `phone` varchar(16) DEFAULT NULL,
-  `opening_hours` varchar(255) DEFAULT NULL
+  `brand_id` int(11) NOT NULL,
+  `location` varchar(255) NOT NULL,
+  `area_name` varchar(100) NOT NULL,
+  `region_name` varchar(100) NOT NULL,
+  `city_name` varchar(100) NOT NULL,
+  `phone` varchar(16) NOT NULL,
+  `opening_hours` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
