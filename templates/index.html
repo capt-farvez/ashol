@@ -195,24 +195,24 @@
                               {% if let Some(first) = one %}
                               <div class="col-md-4">
                                  <div class="product mar_bottom30">
-                                    <figure><img src="assets/{{ first.logo }}" alt="#"/></figure>
-                                    <h3>{{ first.name }}</h3>
+                                    <figure><a href="/brand/{{ first.id }}"><img src="assets/{{ first.logo }}" alt="#"/></a></figure>
+                                    <h3><a href="/brand/{{ first.id }}">{{ first.name }}</a></h3>
                                  </div>
                               </div>
                               {% endif %}
                               {% if let Some(second) = two %}
                               <div class="col-md-4 mar_bottom30">
                                  <div class="product">
-                                    <figure><img src="assets/{{ second.logo }}" alt="#"/></figure>
-                                    <h3>{{ second.name }}</h3>
+                                    <figure><a href="/brand/{{ second.id }}"><img src="assets/{{ second.logo }}" alt="#"/></a></figure>
+                                    <h3><a href="/brand/{{ second.id }}">{{ second.name }}</a></h3>
                                  </div>
                               </div>
                               {% endif %}
                               {% if let Some(third) = three %}
                               <div class="col-md-4">
                                  <div class="product">
-                                    <figure><img src="assets/{{ third.logo }}" alt="#"/></figure>
-                                    <h3>{{ third.name }}</h3>
+                                    <figure><a href="/brand/{{ third.id }}"><img src="assets/{{ third.logo }}" alt="#"/></a></figure>
+                                    <h3><a href="/brand/{{ third.id }}">{{ third.name }}</a></h3>
                                  </div>
                               </div>
                               {% endif %}

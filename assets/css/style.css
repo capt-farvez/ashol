@@ -531,8 +531,8 @@ ul.site_menu li a {
 }
 
 .about_img figure img {
-     border-radius: 300%;
-     border: #f6dc67ab solid 35px;
+     /* border-radius: 300%; */
+     /* border: #f6dc67ab solid 35px; */
      text-align: center;
      margin: 0 auto;
      display: block;
@@ -659,6 +659,7 @@ ul.site_menu li a {
 
 .contact .titlepage h2 {
      color: #fff;
+     font-size: 25px;
 }
 
 .main_form .contactus {
