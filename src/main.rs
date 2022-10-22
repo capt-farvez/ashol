@@ -6,7 +6,7 @@ use axum::{
     routing::{get, post},
     Extension, Router, extract::Path, Form,
 };
-use sqlx::{query_as, MySqlPool};
+use sqlx::{query_as, MySqlPool, query};
 use tower::ServiceExt;
 use tower_http::services::ServeDir;
 use serde::Deserialize;
@@ -40,6 +40,9 @@ struct SearchItems {
 #[template(path = "index.html")]
 struct IndexPage {
     brands: Vec<(Option<Brand>, Option<Brand>, Option<Brand>)>,
+    area: Vec<String>,
+    region: Vec<String>,
+    city: Vec<String>
 }
 
 #[derive(Template)]
@@ -119,7 +122,12 @@ async fn get_index(Extension(pool): Extension<MySqlPool>) -> Html<String> {
             )
         })
         .collect();
-    Html(IndexPage { brands }.render().unwrap())
+    
+    let area: Vec<String> = query!("SELECT area_name FROM area").fetch_all(&pool).await.unwrap().into_iter().map(|a| a.area_name).collect();
+    let region: Vec<String> = query!("SELECT region_name FROM region").fetch_all(&pool).await.unwrap().into_iter().map(|a| a.region_name).collect();
+    let city: Vec<String> = query!("SELECT city_name FROM city").fetch_all(&pool).await.unwrap().into_iter().map(|a| a.city_name).collect();
+
+    Html(IndexPage { brands, area, region, city }.render().unwrap())
 }
 
 async fn post_search(Form(form): Form<Search>, Extension(pool): Extension<MySqlPool>) -> Html<String> {

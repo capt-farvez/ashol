@@ -158,13 +158,28 @@
                            <form id="request" class="main_form" method="post">
                               <div class="row">
                                  <div class="col-md-12 ">
-                                    <input class="contactus" placeholder="Area" name="area" id="area"> 
+                                    <input class="contactus" list="areas" placeholder="Area" name="area" id="area"> 
+                                    <datalist id="areas">
+                                       {% for a in area %}
+                                       <option value="{{ a }}">
+                                       {% endfor %}
+                                    </datalist>
                                  </div>
                                  <div class="col-md-12">
-                                    <input class="contactus" placeholder="City" name="city" id="city"> 
+                                    <input class="contactus" list="cities" placeholder="City" name="city" id="city"> 
+                                    <datalist id="cities">
+                                       {% for c in city %}
+                                       <option value="{{ c }}">
+                                       {% endfor %}
+                                    </datalist>
                                  </div>
                                  <div class="col-md-12">
-                                    <input class="contactus" placeholder="Region" name="region" id="region">                          
+                                    <input class="contactus" list="regions" placeholder="Region" name="region" id="region">
+                                    <datalist id="regions">
+                                       {% for r in region %}
+                                       <option value="{{ r }}">
+                                       {% endfor %}
+                                    </datalist>                          
                                  </div>
                                  
                                  <div class="col-md-12">
@@ -246,13 +261,13 @@
                <span class="sr-only">Next</span>
                </a>
             </div>
-            <div class="container">
+            <!-- <div class="container">
                <div class="row">
                   <div class="col-md-12">
                      <a class="read_more" href="Javascript:void(0)">See More</a>
                   </div>
                </div>
-            </div>
+            </div> -->
          </div>
       </div>
       <!-- end products -->
