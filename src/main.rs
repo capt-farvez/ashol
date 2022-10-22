@@ -3,12 +3,38 @@ use axum::{
     body::{boxed, Body, BoxBody},
     http::{Request, Response, StatusCode, Uri},
     response::Html,
-    routing::get,
-    Extension, Router, extract::Path,
+    routing::{get, post},
+    Extension, Router, extract::Path, Form,
 };
 use sqlx::{query_as, MySqlPool};
 use tower::ServiceExt;
 use tower_http::services::ServeDir;
+use serde::Deserialize;
+
+#[derive(Deserialize, Debug)]
+struct Search {
+    area: String,
+    city: String,
+    region: String,
+}
+
+#[derive(Template)]
+#[template(path = "search.html")]
+struct SearchPage {
+    items: Vec<SearchItems>
+}
+
+#[derive(Debug)]
+struct SearchItems {
+    //brand_id: i32,
+    name: String,
+    location: String,
+    area_name: String,
+    city_name: String,
+    region_name: String,
+    phone: String,
+    opening_hours: String,
+}
 
 #[derive(Template)]
 #[template(path = "index.html")]
@@ -96,6 +122,12 @@ async fn get_index(Extension(pool): Extension<MySqlPool>) -> Html<String> {
     Html(IndexPage { brands }.render().unwrap())
 }
 
+async fn post_search(Form(form): Form<Search>, Extension(pool): Extension<MySqlPool>) -> Html<String> {
+    let items: Vec<SearchItems> = query_as!(SearchItems, "SELECT  name, location, area_name, region_name, city_name, phone, opening_hours FROM brand JOIN branch ON brand.id = branch.brand_id WHERE branch.area_name = ? AND branch.city_name = ? AND branch.region_name = ?", form.area, form.city, form.region).fetch_all(&pool).await.unwrap();
+    let page = SearchPage { items };
+    Html(page.render().unwrap())
+}
+
 #[tokio::main]
 async fn main() {
     let db = MySqlPool::connect("mysql://root@localhost/ashol")
@@ -105,6 +137,7 @@ async fn main() {
     let app = Router::new()
         .route("/", get(get_index))
         .route("/brand/:id", get(get_brand))
+        .route("/", post(post_search))
         .layer(Extension(db))
         .nest("/assets", get(get_assets));
 
